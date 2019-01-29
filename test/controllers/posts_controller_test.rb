@@ -24,8 +24,9 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update post" do
-    patch post_url(@post), params: { post: { body: @post.body, title: @post.title } }, as: :json
+    patch post_url(@post), params: { post: { body: @post.body, title: "Updated" } }, as: :json
     assert_response 200
+    assert_match %r/"title":"Updated"/, @response.body
   end
 
   test "should destroy post" do

@@ -10,4 +10,11 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  # `enlist_fixture_connections` replaces connection pools in non-default handlers
+  # by default writer connection pool.
+  # We can't test `:reading` connection unless suppressing the effect of the method for now.
+  def enlist_fixture_connections
+    []
+  end
 end
